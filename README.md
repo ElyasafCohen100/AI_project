@@ -17,9 +17,10 @@ The evaluation score of the model is: 58.25%, and the loss is: 1.028.
 The code to train the model is in the folder [*cnn-files*](/cnn-files).
 - *training-48-7-labels.py* - Contain the training code. The code is based on 2 JSON files (NOT INCLUDED IN THIS REPOSITORY, ~13 GB of data).
 - *generate-dataset-48-7-labels.py* - Takes all the imaged dataset and convert them into JSON file.
-- *test.py* - Testing the model by loading the saved model (the long file name in format keras) and predict on ar3.jpg file.
+- *test.py* - Contain a function for testing the model by loading the saved model (the long file name in format keras) and predict on received file path from [gui-test.py](/cnn-files/gui-test.py).
+- *gui-test.py* - The test file. Open a window which ask an image path to predict. 
 
-To run the model you can simply run the [*test.py*](/cnn-files/test.py) file.
+To run the model you can simply run the [*gui-test.py*](/cnn-files/gui-test.py) file.
 
 ### KNN
 The model is pre-trained, and the code contain the training functions.
@@ -50,6 +51,8 @@ To run the model all you need is to run the [*main.py*](/knn-files/main.py) file
 - tensorflow
 - os
 - cv2
+- PyQt5
+- sys
 
 #### For the KNN model you will need:
 - cv2
