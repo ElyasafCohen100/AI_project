@@ -4,7 +4,7 @@ import math  # Import math module for mathematical operations
 import generate_dataset_knn  # Import generate_dataset_knn module for dataset generation
 
 # Set the value of k for k-NN algorithm
-k = 100
+k = 5
 
 # Define the train function to train the k-NN classifier
 def train():
@@ -16,6 +16,7 @@ def train():
     """
     # Generate face vector dataset from training images
     images = generate_dataset_knn.generate_faceVector_dataset("train")
+    print(images)
     # Pass the dataset for training and return the classified images
     return pass_on_dataset(images, images, "train")
 
@@ -41,9 +42,9 @@ def pass_on_dataset(sourceImages, compImages, type):
         # Iterate over each comparison image in the dataset
         for compImage in compImages:
             # Exclude self-comparisons during training
-            if sourceImages.index(compImage) != sourceImages.index(image) or type != "train":
+            if compImage != image or type != "train":
                 # Insert distance and class label into the heap
-                heap.insert(f, [distance(image, compImage), image[len(image) - 1]])
+                heap.insert(f, [distance(image, compImage), compImage[len(compImage) - 1]])
         # Initialize an empty list to store class labels for k-nearest neighbors
         classifying = []
         # Retrieve k-nearest neighbors from the heap
@@ -86,7 +87,7 @@ def test(dataset):
     # Iterate over each classified image
     for i in range(length):
         # Compare the class label of each classified image with the ground truth
-        if classifiedImages[i][length - 1] == images[i][length - 1]:
+        if classifiedImages[i][len(classifiedImages[i])-1] == images[i][len(images[i])-1]:
             counter += 1
     # Calculate the accuracy of the classifier
     accuracy = counter / length

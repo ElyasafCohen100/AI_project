@@ -16,7 +16,7 @@ def generate_faceVector_dataset(dir_name):
             label of the image.
     """
     # Construct the full path to the dataset directory
-    DATASET_DIR_NAME = r"dataset\dataset\\" + dir_name
+    DATASET_DIR_NAME = r"dataset\\" + dir_name
 
     # Get a list of subdirectories (class labels) in the dataset directory
     dir_list = os.listdir(DATASET_DIR_NAME)
@@ -36,13 +36,15 @@ def generate_faceVector_dataset(dir_name):
 
             # Detect facial landmarks in the image and generate a face vector
             landmarks = main.detect_landmarks(image)
+            if(len(landmarks)==0):
+                continue
             face_vector = main.generateVector(landmarks)
 
             # Append the class label to the face vector
-            face_vector.append(class_dir_name)
+            face_vector+=[class_dir_name]
 
             # Convert the face vector to a list and append it to the dataset
-            all_images_data.append(face_vector.tolist())
+            all_images_data.append(face_vector)
 
     # Return the list of all face vectors extracted from the dataset
     return all_images_data
