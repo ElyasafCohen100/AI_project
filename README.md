@@ -40,7 +40,7 @@ To run the model all you need is to run the [*main.py*](/knn-files/main.py) file
 (remember, this is pre-trained model, so it will be trained each time you run it.)
 
 ## Dependencies
-For the CNN model you will need:
+#### For the CNN model you will need:
 - json
 - datetime
 - random
@@ -51,7 +51,7 @@ For the CNN model you will need:
 - os
 - cv2
 
-For the KNN model you will need:
+#### For the KNN model you will need:
 - cv2
 - dlib
 - math
@@ -70,4 +70,5 @@ For testing the generate_image function please
 
 We hope you will find this repo usefully for whatever you need.
 
-ElyasafCohen100, danyots, yohanan400. 
+
+    ElyasafCohen100, danyots, yohanan400. 
