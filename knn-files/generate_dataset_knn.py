@@ -1,7 +1,4 @@
 import os
-
-import numpy as np
-import skimage as ski
 import main
 from PIL import Image
 
@@ -20,15 +17,15 @@ def generate_faceVector_dataset(dir_name):
             label of the image.
     """
     # Construct the full path to the dataset directory
-    DATASET_DIR_NAME = dir_name
+    DATASET_DIR_NAME = r"dataset\\" + dir_name
 
     # Get a list of subdirectories (class labels) in the dataset directory
     dir_list = os.listdir(DATASET_DIR_NAME)
 
     # Initialize an empty list to store all face vectors
     all_images_data = []
-    counter = 0
-    all_images_counter = 0
+
+    detect_faces_counter = 0
     # Iterate over each subdirectory (class label) in the dataset
     for class_index, class_dir_name in enumerate(dir_list):
         # Get a list of image filenames in the current subdirectory
@@ -37,23 +34,22 @@ def generate_faceVector_dataset(dir_name):
         # Iterate over each image in the current subdirectory
         for image_name in images_list:
             # Open the image using PIL (Python Imaging Library)
-            image = ski.io.imread(os.path.join(DATASET_DIR_NAME, class_dir_name, image_name))
+            image = Image.open(os.path.join(DATASET_DIR_NAME, class_dir_name, image_name))
 
             # Detect facial landmarks in the image and generate a face vector
-            landmarks = main.detect_landmarks(np.array(image))
-            if landmarks is None:
+            landmarks = main.detect_landmarks(image)
+            if (len(landmarks) == 0):
                 continue
+            detect_faces_counter += 1
+            print(str(detect_faces_counter) + " faces detected")
             face_vector = main.generateVector(landmarks)
 
             # Append the class label to the face vector
-            face_vector.append(class_dir_name)
+            face_vector += [class_dir_name]
 
             # Convert the face vector to a list and append it to the dataset
-            all_images_data.append(face_vector.tolist())
-            all_images_counter += 1
-            if landmarks is not None:
-                counter += 1
+            all_images_data.append(face_vector)
+    print("Done.")
 
     # Return the list of all face vectors extracted from the dataset
-    print(counter / all_images_counter)
     return all_images_data

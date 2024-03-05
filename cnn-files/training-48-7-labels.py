@@ -23,59 +23,6 @@ def create_model():
 
 
 # STEP 1: LOAD DATASET FILES AND PREPARE DATA
-
-# # Opening 1st JSON file
-# print("Opening 1st JSON file")
-# f = open('dataset-data-new1.json', 'r')
-# data = json.load(f)
-# features = np.array(data[0])
-# labels = np.array(data[1])
-# f.close()
-#
-# # Opening 2nd JSON file
-# print("Opening 2nd JSON file")
-# f = open('dataset-data-new2.json', 'r')
-# data = json.load(f)
-# features = np.concatenate((features, np.array(data[0])))
-# labels = np.concatenate((labels, np.array(data[1])))
-# f.close()
-#
-# # Opening 3rd JSON file
-# print("Opening 3rd JSON file")
-# f = open('dataset-data-new3.json', 'r')
-# data = json.load(f)
-# features = np.concatenate((features, np.array(data[0])))
-# labels = np.concatenate((labels, np.array(data[1])))
-# f.close()
-#
-# # Opening 4th JSON file
-# print("Opening 4th JSON file")
-# f = open('dataset-data-new4.json', 'r')
-# data = json.load(f)
-# features = np.concatenate((features, np.array(data[0])))
-# labels = np.concatenate((labels, np.array(data[1])))
-# f.close()
-#
-#
-# Opening train JSON file
-# print("Opening train JSON file")
-# f = open('new-dataset-48-48-RGB-train.json', 'r')
-# data = json.load(f)
-# features_train = np.array(data[0])
-# labels_train = np.array(data[1])
-# f.close()
-#
-# # Opening validation JSON file
-# print("Opening validation JSON file")
-# f = open('new-dataset-48-48-RGB-validation.json', 'r')
-# data = json.load(f)
-# features_test = np.array(data[0])
-# labels_test = np.array(data[1])
-# f.close()
-
-# Opening 1st JSON file
-
-# STEP 1: LOAD DATASET FILES AND PREPARE DATA
 print("Opening combined JSON file")
 f = open('combined-Facial-expression-data-label-48-48-RGB-7-labels.json', 'r')
 data = json.load(f)
